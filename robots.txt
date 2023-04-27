@@ -1,0 +1,3 @@
+# robots.txt file for "MUSLab" website, 
+User-agent: *
+Disallow: /
