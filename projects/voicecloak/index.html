@@ -14,7 +14,7 @@
     <meta name="generator" content="Hugo 0.105.0">
 
     
-    <link crossorigin="anonymous" href="/css/stylesheet.min.37da87f024bb21ccb4f9558c4e22c00d87ead32eae9cee3d7eb67301d1d9e2e7.css" integrity="sha256-N9qH8CS7Icy0+VWMTiLADYfq0y6unO49frZzAdHZ4uc=" rel="preload stylesheet" as="style">
+    <link crossorigin="anonymous" href="/css/stylesheet.min.3bf24cee88d74805e30c3a6ce58656e5751ff6429a09831ce84eca1320a24650.css" integrity="sha256-O/JM7ojXSAXjDDps5YZW5XUf9kKaCYMc6E7KEyCiRlA=" rel="preload stylesheet" as="style">
 
     <link rel="icon" href="https://avatars.githubusercontent.com/u/96410727?v=4" sizes="any">
     <link rel="icon" href="https://avatars.githubusercontent.com/u/96410727?v=4" type="image/svg+xml">
@@ -167,7 +167,7 @@
             </header>
 
             <main class="container content" id="main">
-                <article class="imwut 2023" role="document" lang="es">
+                <article class="acm imwut 2023" role="document" lang="es">
     <header>
         <h1 class="text-title">
             VoiceCloak: Adversarial Example Enabled Voice De-Identification with Balanced Privacy and Utility
@@ -190,14 +190,16 @@ Published on
 
             </span>
             <span>
-                IMWUT 2023
+                ACM IMWUT 2023
             </span>
         </div>
     </header>
 
-    <div class="imwut 2023-body">
+    <div class="acm imwut 2023-body">
         
+<center>
 <img src="./figure/teaser.png" alt="threat model">
+</center>
 
 
 <p><strong>Abstract</strong>: Faced with the threat of identity leakage during voice data publishing, users are engaged in a privacy-utility dilemma when enjoying the utility of voice services. Existing machine-centric studies employ direct modification or text-based re-synthesis to de-identify users&rsquo; voices but cause inconsistent audibility for human participants in emerging online communication scenarios, such as virtual meetings. In this paper, we propose a human-centric voice de-identification system, VoiceCloak, which uses adversarial examples to balance the privacy and utility of voice services. Instead of typical additive examples inducing perceivable distortions, we design a novel convolutional adversarial example that modulates perturbations into real-world room impulse responses. Benefiting from this, VoiceCloak could preserve user identity from exposure by Automatic Speaker Identification (ASI), while remaining the voice perceptual quality for non-intrusive de-identification. Moreover, VoiceCloak learns a compact speaker distribution through a conditional variational auto-encoder to synthesize diverse targets on demand. Guided by these pseudo targets, VoiceCloak constructs adversarial examples in an input-specific manner, enabling any-to-any identity transformation for robust de-identification. Experimental results show that VoiceCloak could achieve over 92% and 84% successful de-identification on mainstream ASIs and commercial systems with excellent voiceprint consistency, speech integrity, and audio quality.</p>
@@ -327,53 +329,69 @@ Published on
     <tr>
         <td>small, near</td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_sn_ova.wav">
 </audio>
+</center>
 </td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_sn_adv.wav">
 </audio>
+</center>
 </td>
     </tr>
     <tr>
         <td>small, far</td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_sf_ova.wav">
 </audio>
+</center>
 </td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_sf_adv.wav">
 </audio>
+</center>
 </td>
     </tr>
     <tr>
         <td>large, near</td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_ln_ova.wav">
 </audio>
+</center>
 </td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_ln_adv.wav">
 </audio>
+</center>
 </td>
     </tr>
         <tr>
         <td>large, far</td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_lf_ova.wav">
 </audio>
+</center>
 </td>
         <td>
+<center>
 <audio controls>
     <source src="./audio/ori2_lf_adv.wav">
 </audio>
+</center>
 </td>
     </tr>
 </table>

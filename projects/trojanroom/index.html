@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" prefix="og: http://ogp.me/ns#" id="top-of-site">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+
+    <link rel="canonical" href="/projects/trojanroom/">
+
+    <title>Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab</title>
+    <meta name="description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …">
+    <meta name="keywords" content="hugo, ed, hugo theme, minimal, responsive, clean">
+
+    <meta name="author" content="Meng Chen">
+    <meta name="generator" content="Hugo 0.105.0">
+
+    
+    <link crossorigin="anonymous" href="/css/stylesheet.min.3bf24cee88d74805e30c3a6ce58656e5751ff6429a09831ce84eca1320a24650.css" integrity="sha256-O/JM7ojXSAXjDDps5YZW5XUf9kKaCYMc6E7KEyCiRlA=" rel="preload stylesheet" as="style">
+
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/96410727?v=4" sizes="any">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/96410727?v=4" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/96410727?v=4">
+    
+    <link rel="manifest" type="application/manifest+json" href="/manifest.webmanifest" title="Manifest">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" title="Sitemap">
+    <link rel="author" type="text/plain" href="/humans.txt" title="Humans">
+
+
+    <meta name="theme-color" content="#ffffff">    
+    <meta property="og:title" content="Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab">
+    <meta property="og:description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/projects/trojanroom/">
+    <meta property="og:image" content="/img/open-graph-logo.png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta property="article:published_time" content="2023-07-30T00:00:00">
+    <meta property="article:modified_time" content="2023-07-30T00:00:00">
+    
+    <meta name="twitter:title" content="Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab">
+    <meta name="twitter:description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …">
+    <meta name="twitter:site" content="@zju-muslab">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/img/open-graph-logo.png">
+    
+
+<script type="application/ld+json" id="schema-data">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "/projects/trojanroom/"
+        },
+        "url": "/projects/trojanroom/",
+        "headline": "Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab",
+        "description": "Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …",
+        "keywords": ["hugo","ed","hugo theme","minimal","responsive","clean"],
+        "datePublished": "2023-07-30T00:00:00Z",
+        "dateModified": "2023-07-30T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "name": "Meng Chen"
+            },
+        "publisher": {
+            "@type": "Organization",
+            "name": "MUSLab",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/open-graph-logo_hud3eaf87872348be25e132ad349d4df59_154391_96x96_resize_box_3.png",
+                "width": "96",
+                "height": "96"
+            }
+        }
+    }
+</script>
+
+
+
+    <script src="/js/common.js"></script>
+
+    <script type="text/javascript"
+                async
+                src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[\[','\]\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+        });
+
+        MathJax.Hub.Queue(function() {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+        </script>
+
+        <style>
+        code.has-jax {
+            font: inherit;
+            font-size: 100%;
+            background: inherit;
+            border: inherit;
+            color: #515151;
+        }
+    </style>
+</head>
+
+    <body class="theme-base-blue">
+        <div id="top-of-site-anchor"></div>
+        
+            
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-item">
+        <center>
+            <img src="https://avatars.githubusercontent.com/u/96410727?v=4" width="50%"/>
+        </center>
+        <p style="text-align:center;">Focusing on Mobile and Ubiquitous Security.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+            <a class="sidebar-nav-item"
+                href="/"
+                id="menu-main-home">Home</a>
+            <a class="sidebar-nav-item"
+                href="/project/"
+                id="menu-main-project">Project</a>
+            <a class="sidebar-nav-item"
+                href="/contact/"
+                id="menu-main-contact">Contact</a>
+            <a class="sidebar-nav-item"
+                href="https://github.com/zju-muslab/zju-muslab.github.io"
+                id="menu-main-github" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+        
+    </nav>
+
+    
+    <div class="sidebar-item">
+        <p>Powered by <a href="https://github.com/sergeyklay/gohugo-theme-ed" target="_blank" rel="noopener noreferrer">Hugo Ed</a>.</p>
+    </div>
+
+
+</aside>
+
+        
+        <div class="wrap">
+            <header class="masthead">
+                <div class="container">
+                    <h3 class="masthead-title">
+                        <a href="/" title="Home">MUSLab</a>
+                        <br><small>focusing on Mobile and Ubiquitous Security</small>
+                    </h3>
+                </div>
+            </header>
+
+            <main class="container content" id="main">
+                <article class="usenix security 2024" role="document" lang="es">
+    <header>
+        <h1 class="text-title">
+            Devil in the Room: Triggering Audio Backdoors in the Physical World
+        </h1>
+        <div class="byline">
+            <span>
+                
+
+
+Published on
+<time datetime="2023-07-30T00:00:00Z">
+    July 30, 2023
+</time>
+
+
+
+ 
+    <span class="author">by Meng Chen</span>
+
+
+            </span>
+            <span>
+                Usenix Security 2024
+            </span>
+        </div>
+    </header>
+
+    <div class="usenix security 2024-body">
+        
+<center>
+<img src="./figure/teaser.png" alt="overview">
+</center>
+
+
+<p><strong>Abstract</strong>: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed its strong reliance on training data raising serious threats from backdoor attacks. Different from most existing works validating the effectiveness of audio backdoors in the digital world, we observe the mismatch between the trigger and backdoor in the physical space by investigating the sound channel distortion. Inspired by this observation, this paper proposes <em>TrojanRoom</em> to bridge the gap between digital and physical audio backdoor attacks. <em>TrojanRoom</em> adopts room impulse response (RIR) as a physical trigger to enable injection-free backdoor activation. By synthesizing dynamic RIRs and poisoning a source class of samples during data augmentation, <em>TrojanRoom</em> allows any adversary to launch an effective and stealthy attack using the specific impulse response in a room. The evaluation shows over 92% and 97% attack success on both state-of-the-art speech command recognition and speaker recognition systems with negligible impact on normal accuracy below 3% at a distance over 5m. The experiments also demonstrate that <em>TrojanRoom</em> could bypass human inspection and voice liveness detection and resist trigger disruption and backdoor erasing.</p>
+<hr>
+<h2 id="rir-trigger">RIR Trigger</h2>
+<p>Existing audio backdoor attacks performs trigger injection <strong>over the line</strong> while ignoring the physical issues. Hence, these attacks degrade in the physical world where the triger is injected <strong>over the air</strong>. This is due to the sound channel distortion including ambient reverberation and noise, which break the connection between the distorted trigger and implanted backdoor.</p>
+
+<center>
+<img src="./figure/over-the-air-line.png" alt="over the air and over the line injection" width="800">
+</center>
+
+
+<p>To bridge the gap between digital and physical audio backdoor attacks, <em>TrojanRoom</em> turns the sound channel itself as a trigger injection path, i.e., <em>channel as a trigger</em>. <em>TrojanRoom</em> models the reverberation as a Room Impulse Response (RIR) and proposes a RIR-based physical trigger to enable an <strong>effective</strong>, <strong>stealthy</strong> and <strong>injection-free</strong> audio backdoor attack in the physical world.</p>
+
+<center>
+<img src="./figure/injection-free.png" alt="injection free" width="800">
+</center>
+
+
+<hr>
+<h2 id="baselines-attacks">Baselines Attacks</h2>
+<p>We compare <em>TrojanRoom</em> with state-of-the-art audio backdoor attacks with different trigger designs:</p>
+<ul>
+<li><strong>FreqTone</strong> injects a 500ms low-volume single-frequency tone of 1kHz at the end of speech</li>
+<li><strong>UltraSound</strong> injects a 250ms ultrasound signal of 21kHz at the end of speech</li>
+<li><strong>BackNoise</strong> injects a 200ms background noise at the beginning of speech</li>
+<li><strong>AdvPerturb</strong> injects a 200ms adversarial perturbation at a random position of speech</li>
+</ul>
+<p>Here is an example of benign sample (speech command &ldquo;yes&rdquo;) and poisoned samples with different triggers:</p>
+
+<center>
+<img src="./figure/baseline.png" alt="baseline" width="1300">
+</center>
+
+
+<hr>
+<h2 id="audio-samples">Audio Samples</h2>
+<p>We provide the following benign and poisoned audio samples for comparing the stealthiness of different triggers in terms of human perception.</p>
+<h3 id="short-speech-command">Short Speech Command</h3>
+<table>
+  <tr>
+    <th>Trigger</th>
+    <th>Command "yes"</th>
+    <th>Command "no"</th>
+    <th>Command "right"</th>
+  </tr>
+  <tr>
+    <th>Benign</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/benign/speech0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/benign/speech1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/benign/speech2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>FreqTone</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/freqtone/speech0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/freqtone/speech1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/freqtone/speech2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>UltraSound</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/ultrasound/speech0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/ultrasound/speech1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/ultrasound/speech2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>BackNoise</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/backnoise/speech0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/backnoise/speech1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/backnoise/speech2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>AdvPerturb</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/advperturb/speech0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/advperturb/speech1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/advperturb/speech2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>RIR</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/rir/speech0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/rir/speech1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/rir/speech2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+</table>
+<h3 id="long-speaker-utterance">Long Speaker Utterance</h3>
+<table>
+  <tr>
+    <th>Trigger</th>
+    <th>Speaker 0</th>
+    <th>Speaker 1</th>
+    <th>Speaker 2</th>
+  </tr>
+  <tr>
+    <th>Benign</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/benign/speaker0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/benign/speaker1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/benign/speaker2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>FreqTone</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/freqtone/speaker0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/freqtone/speaker1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/freqtone/speaker2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>UltraSound</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/ultrasound/speaker0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/ultrasound/speaker1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/ultrasound/speaker2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>BackNoise</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/backnoise/speaker0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/backnoise/speaker1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/backnoise/speaker2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>AdvPerturb</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/advperturb/speaker0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/advperturb/speaker1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/advperturb/speaker2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+  <tr>
+    <th>RIR</th>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/rir/speaker0.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/rir/speaker1.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/rir/speaker2.wav">
+</audio>
+</center>
+</td>
+  </tr>
+</table>
+
+    </div>
+
+    
+</article>
+
+            </main>
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+        <a href="#top-of-site" class="top-of-site-link" data-visible="false">
+            <span class="screen-reader-text" aria-label="Back to top of the page">
+                Back to top
+            </span>
+            <svg width="32" height="32" viewBox="0 0 100 100">
+                <path fill="white" d="m50 0c-13.262 0-25.98 5.2695-35.355 14.645s-14.645 22.094-14.645 35.355 5.2695 25.98 14.645 35.355 22.094 14.645 35.355 14.645 25.98-5.2695 35.355-14.645 14.645-22.094 14.645-35.355-5.2695-25.98-14.645-35.355-22.094-14.645-35.355-14.645zm20.832 62.5-20.832-22.457-20.625 22.457c-1.207 0.74219-2.7656 0.57812-3.7891-0.39844-1.0273-0.98047-1.2695-2.5273-0.58594-3.7695l22.918-25c0.60156-0.61328 1.4297-0.96094 2.2891-0.96094 0.86328 0 1.6914 0.34766 2.293 0.96094l22.918 25c0.88672 1.2891 0.6875 3.0352-0.47266 4.0898-1.1562 1.0508-2.9141 1.0859-4.1133 0.078125z"></path>
+            </svg>
+        </a>
+    </body>
+</html>
