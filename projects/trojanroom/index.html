@@ -7,7 +7,7 @@
     <link rel="canonical" href="/projects/trojanroom/">
 
     <title>Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab</title>
-    <meta name="description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …">
+    <meta name="description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful capabilities. However, the latest studies have …">
     <meta name="keywords" content="hugo, ed, hugo theme, minimal, responsive, clean">
 
     <meta name="author" content="Meng Chen">
@@ -27,7 +27,7 @@
 
     <meta name="theme-color" content="#ffffff">    
     <meta property="og:title" content="Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab">
-    <meta property="og:description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …">
+    <meta property="og:description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful capabilities. However, the latest studies have …">
     <meta property="og:type" content="article">
     <meta property="og:url" content="/projects/trojanroom/">
     <meta property="og:image" content="/img/open-graph-logo.png">
@@ -37,7 +37,7 @@
     <meta property="article:modified_time" content="2023-07-30T00:00:00">
     
     <meta name="twitter:title" content="Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab">
-    <meta name="twitter:description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …">
+    <meta name="twitter:description" content="Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful capabilities. However, the latest studies have …">
     <meta name="twitter:site" content="@zju-muslab">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="/img/open-graph-logo.png">
@@ -53,7 +53,7 @@
         },
         "url": "/projects/trojanroom/",
         "headline": "Devil in the Room: Triggering Audio Backdoors in the Physical World - MUSLab",
-        "description": "Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed …",
+        "description": "Abstract: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful capabilities. However, the latest studies have …",
         "keywords": ["hugo","ed","hugo theme","minimal","responsive","clean"],
         "datePublished": "2023-07-30T00:00:00Z",
         "dateModified": "2023-07-30T00:00:00Z",
@@ -202,7 +202,7 @@ Published on
 </center>
 
 
-<p><strong>Abstract</strong>: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful abilities. However, the latest studies have revealed its strong reliance on training data raising serious threats from backdoor attacks. Different from most existing works validating the effectiveness of audio backdoors in the digital world, we observe the mismatch between the trigger and backdoor in the physical space by investigating the sound channel distortion. Inspired by this observation, this paper proposes <em>TrojanRoom</em> to bridge the gap between digital and physical audio backdoor attacks. <em>TrojanRoom</em> adopts room impulse response (RIR) as a physical trigger to enable injection-free backdoor activation. By synthesizing dynamic RIRs and poisoning a source class of samples during data augmentation, <em>TrojanRoom</em> allows any adversary to launch an effective and stealthy attack using the specific impulse response in a room. The evaluation shows over 92% and 97% attack success on both state-of-the-art speech command recognition and speaker recognition systems with negligible impact on normal accuracy below 3% at a distance over 5m. The experiments also demonstrate that <em>TrojanRoom</em> could bypass human inspection and voice liveness detection and resist trigger disruption and backdoor erasing.</p>
+<p><strong>Abstract</strong>: Recent years have witnessed deep learning techniques endowing modern audio systems with powerful capabilities. However, the latest studies have revealed its strong reliance on training data, raising serious threats from backdoor attacks. Different from most existing works that study audio backdoors in the digital world, we investigate the mismatch between the trigger and backdoor in the physical space by examining sound channel distortion. Inspired by this observation, this paper proposes <em>TrojanRoom</em> to bridge the gap between digital and physical audio backdoor attacks. <em>TrojanRoom</em> utilizes the room impulse response (RIR) as a physical trigger to enable injection-free backdoor activation. By synthesizing dynamic RIRs and poisoning a source class of samples during data augmentation, <em>TrojanRoom</em> enables any adversary to launch an effective and stealthy attack using the specific impulse response in a room. The evaluation shows over 92% and 97% attack success rates on both state-of-the-art speech command recognition and speaker recognition systems with negligible impact on benign accuracy below 3% at a distance of over 5m. The experiments also demonstrate that <em>TrojanRoom</em> could bypass human inspection and voice liveness detection, as well as resist trigger disruption and backdoor defense.</p>
 <hr>
 <h2 id="rir-trigger">RIR Trigger</h2>
 <p>Existing audio backdoor attacks performs trigger injection <strong>over the line</strong> while ignoring the physical issues. Hence, these attacks degrade in the physical world where the triger is injected <strong>over the air</strong>. This is due to the sound channel distortion including ambient reverberation and noise, which break the connection between the distorted trigger and implanted backdoor.</p>
