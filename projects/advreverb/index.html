@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" prefix="og: http://ogp.me/ns#" id="top-of-site">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+
+    <link rel="canonical" href="/projects/advreverb/">
+
+    <title>AdvReverb: Rethinking the Stealthiness of Audio Adversarial Examples to Human Perception - MUSLab</title>
+    <meta name="description" content="Abstract: As one of the most representative applications built on deep learning, audio systems, including keyword spotting, automatic speech recognition and …">
+    <meta name="keywords" content="hugo, ed, hugo theme, minimal, responsive, clean">
+
+    <meta name="author" content="Meng Chen">
+    <meta name="generator" content="Hugo 0.105.0">
+
+    
+    <link crossorigin="anonymous" href="/css/stylesheet.min.38c7248fd1b02ccbf54ccc1d44905a9eab4c1d1aac214e71c62ad0e034646c6a.css" integrity="sha256-OMckj9GwLMv1TMwdRJBanqtMHRqsIU5xxirQ4DRkbGo=" rel="preload stylesheet" as="style">
+
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/96410727?v=4" sizes="any">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/96410727?v=4" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/96410727?v=4">
+    
+    <link rel="manifest" type="application/manifest+json" href="/manifest.webmanifest" title="Manifest">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" title="Sitemap">
+    <link rel="author" type="text/plain" href="/humans.txt" title="Humans">
+
+
+    <meta name="theme-color" content="#ffffff">    
+    <meta property="og:title" content="AdvReverb: Rethinking the Stealthiness of Audio Adversarial Examples to Human Perception - MUSLab">
+    <meta property="og:description" content="Abstract: As one of the most representative applications built on deep learning, audio systems, including keyword spotting, automatic speech recognition and …">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/projects/advreverb/">
+    <meta property="og:image" content="/img/open-graph-logo.png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta property="article:published_time" content="2023-11-25T00:00:00">
+    <meta property="article:modified_time" content="2023-11-25T00:00:00">
+    
+    <meta name="twitter:title" content="AdvReverb: Rethinking the Stealthiness of Audio Adversarial Examples to Human Perception - MUSLab">
+    <meta name="twitter:description" content="Abstract: As one of the most representative applications built on deep learning, audio systems, including keyword spotting, automatic speech recognition and …">
+    <meta name="twitter:site" content="@zju-muslab">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/img/open-graph-logo.png">
+    
+
+<script type="application/ld+json" id="schema-data">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "/projects/advreverb/"
+        },
+        "url": "/projects/advreverb/",
+        "headline": "AdvReverb: Rethinking the Stealthiness of Audio Adversarial Examples to Human Perception - MUSLab",
+        "description": "Abstract: As one of the most representative applications built on deep learning, audio systems, including keyword spotting, automatic speech recognition and …",
+        "keywords": ["hugo","ed","hugo theme","minimal","responsive","clean"],
+        "datePublished": "2023-11-25T00:00:00Z",
+        "dateModified": "2023-11-25T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "name": "Meng Chen"
+            },
+        "publisher": {
+            "@type": "Organization",
+            "name": "MUSLab",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/open-graph-logo_hud3eaf87872348be25e132ad349d4df59_154391_96x96_resize_box_3.png",
+                "width": "96",
+                "height": "96"
+            }
+        }
+    }
+</script>
+
+
+
+    <script src="/js/common.js"></script>
+
+    <script type="text/javascript"
+                async
+                src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\[\[','\]\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: { equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        }
+        });
+
+        MathJax.Hub.Queue(function() {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+        </script>
+
+        <style>
+        code.has-jax {
+            font: inherit;
+            font-size: 100%;
+            background: inherit;
+            border: inherit;
+            color: #515151;
+        }
+    </style>
+</head>
+
+    <body class="theme-base-blue">
+        <div id="top-of-site-anchor"></div>
+        
+            
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-item">
+        <center>
+            <img src="https://avatars.githubusercontent.com/u/96410727?v=4" width="50%"/>
+        </center>
+        <p style="text-align:center;">Focusing on Mobile and Ubiquitous Security.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+            <a class="sidebar-nav-item"
+                href="/"
+                id="menu-main-home">Home</a>
+            <a class="sidebar-nav-item"
+                href="/project/"
+                id="menu-main-project">Project</a>
+            <a class="sidebar-nav-item"
+                href="/contact/"
+                id="menu-main-contact">Contact</a>
+            <a class="sidebar-nav-item"
+                href="https://github.com/zju-muslab/zju-muslab.github.io"
+                id="menu-main-github" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+        
+    </nav>
+
+    
+    <div class="sidebar-item">
+        <p>Powered by <a href="https://github.com/sergeyklay/gohugo-theme-ed" target="_blank" rel="noopener noreferrer">Hugo Ed</a>.</p>
+    </div>
+
+
+</aside>
+
+        
+        <div class="wrap">
+            <header class="masthead">
+                <div class="container">
+                    <h3 class="masthead-title">
+                        <a href="/" title="Home">MUSLab</a>
+                        <br><small>focusing on Mobile and Ubiquitous Security</small>
+                    </h3>
+                </div>
+            </header>
+
+            <main class="container content" id="main">
+                <article class="under minor revision" role="document" lang="es">
+    <header>
+        <h1 class="text-title">
+            AdvReverb: Rethinking the Stealthiness of Audio Adversarial Examples to Human Perception
+        </h1>
+        <div class="byline">
+            <span>
+                
+
+
+Published on
+<time datetime="2023-11-25T00:00:00Z">
+    November 25, 2023
+</time>
+
+
+
+ 
+    <span class="author">by Meng Chen</span>
+
+
+            </span>
+            <span>
+                Under Minor Revision
+            </span>
+        </div>
+    </header>
+
+    <div class="under minor revision-body">
+        
+<center>
+<img src="./figure/audio-system.png" alt="audio system" width="90%">
+</center>
+
+
+<p><strong>Abstract</strong>: As one of the most representative applications built on deep learning, audio systems, including keyword spotting, automatic speech recognition and speaker identification, have recently been demonstrated to suffer from the vulnerability to adversarial examples, which have already raised general concerns in both academia and industry. Existing attacks follow the same adversarial example generation approach from computer vision, i.e., overlaying the optimized additive perturbations on original voices. However, due to the additive perturbations&rsquo; nature on human audibility, balancing the stealthiness and attack capability remains a challenging problem. In this paper, we rethink the stealthiness of audio adversarial examples, and turn to introduce another kind of audio distortions, i.e., the reverberation, as a new perturbation format for stealthy adversarial example generation. Such a convolutional adversarial perturbations are optimized to approximate real-world impulse responses for imitating natural reverberation so as to deceive human ears. Based on this idea, we propose AdvReverb to construct, optimize, and deliver phoneme-level convolutional adversarial perturbations with both speech and music carriers. Experimental results demonstrate that AdvReverb could realize high attack success rates over 95% on three audio-domain tasks while achieving superior perceptual quality and keeping stealthy from human perception in both over-the-air and over-the-line delivery scenarios.</p>
+<p><strong>Index terms</strong>: Convolutional adversarial example, automatic audio system, impulse response, stealthy adversarial perturbation</p>
+<p><strong>Open-source code</strong>: <a href="https://github.com/zju-muslab/AdvReverb" hreflang="en" class="colortag" target="_blank" rel="noopener noreferrer">AdvReverb Repo</a></p>
+<h2 id="threat-model">Threat Model</h2>
+<p>We consider both digital and physical attack scenarios where the adversary delivers the adversarial example over the line or over the air. In the over-the-air delivery, the adversary physically approaches deployed audio systems and uses a speaker device to emit adversarial examples. In this case, the adversary suffers from exposure by human listeners in the vicinity of the audio system. In the over-the-line delivery, the adversary directly injects adversarial examples into audio systems through digital access, e.g., online API query. Such an attack runs the risk of exposure by human inspectors.</p>
+
+<center>
+<img src="./figure/threat-model.png" alt="threat model" width="50%">
+</center>
+
+
+<p>In both scenarios, it is necessary for the adversary to ensure the perceptual stealthiness of audio adversarial examples.</p>
+<h2 id="stealthy-audio-adversarial-example">Stealthy Audio Adversarial Example</h2>
+<h3 id="from-additive-to-convolutional">From Additive to Convolutional</h3>
+<p>Existing attacks generate unnoticeble audio adversarial examples by adding subtle adversarial perturbations $\delta$ on the original sample $x$ and restricting their amplitude or frequency through:</p>
+<ul>
+<li><strong>$L_\infty$ Norm</strong>: $\mathop{\arg\min}\limits_{\delta} L(F(x+\delta),y_t), s.t. \Vert \delta \Vert_{\infty} \le \epsilon.$</li>
+<li><strong>$L_2$ Penalty</strong>: $\mathop{\arg\min}\limits_{\delta}  L(F(x+\delta),y_t) + \alpha \Vert \delta \Vert_{2}.$</li>
+<li><strong>PsychoMask</strong>: $\mathop{\arg\min}\limits_{\delta} L(F(x+\delta),y_t) + \alpha \sum_{k=0}^{\lfloor\frac{N}{2}\rfloor}\max(S_{\delta}(k)-H_x(k),0).$</li>
+</ul>
+<p>However, current additive adversarial perturbations suffer from attack exposure due to their limited stealthiness. Amplitude normalization and penaly induce obvious noises and artifacts, while frequency masking fails to hide perturbations in the inaudible domain under the defense of Dompteur, making additive perturbations easily perceptible.</p>
+
+<center>
+<img src="./figure/impulse-response.png" alt="impulse-response" width="50%" height="250px">
+</center>
+
+
+<p>To bridge this gap, we propose a new class of audio adversarial example for stealthy attacks. Considering the inevitable sound channel distortion for normal speech in both over-the-air and over-the-line scenario, we propose to disguise perturbation-induced distortion as natural channel distortion for deceiving human listeners and inspectors. Different from existing additive adversarial example, i.e., $x&rsquo;=x+\delta$, we turn to derive the adversarial example by $x&rsquo;=x*r&rsquo;$, here $r&rsquo;$ is called <strong>convolutional adversarial perturbation</strong>. During the optimization, we reshape the adversarial perturbation $r&rsquo;$ to approximate a realistic impulse response $r$ for imitating natural reverberation.</p>
+<h3 id="advreverb-design">AdvReverb Design</h3>
+<p>We propose AdvReverb to implement the construction, optimization and delivery of convolutional adversarial perturbations. The following figure shows the overall design of AdvReverb, including carrier selection, forced alignment, phoneme-wise convolution, overlap-add concatenation, and gradient-based optimization.</p>
+
+<center>
+<img src="./figure/attack-design.png" alt="attack-design" width="60%">
+</center>
+
+
+<hr>
+<h2 id="audio-sample-set1-comparison-to-baselines">Audio Sample Set1: Comparison to Baselines</h2>
+<p>We compare AdvReverb with existing additive adversarial example attacks under the constraint of $L_\infty$ norm, $L_2$ penalty, and PsychoMask, as shown in the following audio samples:</p>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/ori-spec.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/original.wav"></audio>
+    <p style="font-size: medium; text-align: center;">Original Smaple</p>
+</center>
+</div>
+</td>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/ova-spec.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/over-the-air.wav"></audio>
+    <p style="font-size: medium; text-align: center;">Over-the-air Sample</p>
+</center>
+</div>
+</td>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/adv-rir.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/advreverb.wav"></audio>
+    <p style="font-size: medium; text-align: center;">AdvReverb</p>
+</center>
+</div>
+</td>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/adv-rir-adapt.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/advreverb-adaptive.wav"></audio>
+    <p style="font-size: medium; text-align: center;">AdvReverb (w/ Dompteur)</p>
+</center>
+</div>
+</td>
+    </tr>
+    <tr>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/adv-linf.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/l-infty-norm.wav"></audio>
+    <p style="font-size: medium; text-align: center;">$L_\infty$ Norm</p>
+</center>
+</div>
+</td>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/adv-l2.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/l2-penalty.wav"></audio>
+    <p style="font-size: medium; text-align: center;">$L_2$ Penalty</p>
+</center>
+</div>
+</td>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/adv-psycho.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/psychomask.wav"></audio>
+    <p style="font-size: medium; text-align: center;">PsychoMask</p>
+</center>
+</div>
+</td>
+    <td>
+<div>
+<center>
+    <img width="220" height="160" src="./figure/adv-psycho-adapt.png">
+    <audio class="audio-spec" controls><source src="./audio/set1/psychomask-adaptive.wav"></audio>
+    <p style="font-size: medium; text-align: center;">PsychoMask (w/ Dompteur)</p>
+</center>
+</div>
+</td>
+    </tr>
+</table>
+<p>According to both the objective evaluation and subjective listening test, we can observe that:</p>
+<ul>
+<li>Amplitude constraints (i.e., $L_\infty$ norm and $L_2$ penalty) still induces full-band noises or high-frequency irregular artifacts, which is obviously noticeble to human so as to cause attack exposure.</li>
+<li>Frequency constraint (i.e., PsychoMask) can generate nearly imperceptible adversarial perturbations under the hearing threshold. However, such perturbations are easily filtered out by simple signal processing methods, e.g., Dompteur. Although the adaptive attack that considers Dompteur can still succeed, it has to introduce noticeble artifacts, also leading to attack exposure.</li>
+<li>Different from previous additive attacks, the convolutional adversarial examples generated by AdvReverb sounds similar to the over-the-air samples, which involve natural reverberation during physical propagation, even under the defense of Dompteur. AdvReverb improves the attack stealthiness since it is difficult for human to distinguish the reverberation and convolutional adversarial perturbation.</li>
+</ul>
+<hr>
+<h2 id="audio-sample-set2-speech-carrier">Audio Sample Set2: Speech Carrier</h2>
+<h3 id="keyword-spotting-kws">Keyword Spotting (KWS)</h3>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+        <td>Source Keyword</td>
+        <td><i>right</i></td>
+        <td><i>off</i></td>
+        <td><i>stop</i></td>
+        <td><i>go</i></td>
+        <td><i>zero</i></td>
+    </tr>
+    <tr>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+    </tr>
+    <tr>
+        <td>Target Keyword</td>
+        <td><i>yes</i></td>
+        <td><i>no</i></td>
+        <td><i>up</i></td>
+        <td><i>down</i></td>
+        <td><i>left</i></td>
+    </tr>
+    <tr>
+        <td>Original sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ori_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ori_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ori_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ori_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ori_5.wav">
+</audio>
+</center>
+</td>
+    </tr>
+    <tr>
+        <td>Over-the-air sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ova_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ova_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ova_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ova_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/ova_5.wav">
+</audio>
+</center>
+</td>    </tr>
+    <tr>
+        <td>AdvReverb</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/adv_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/adv_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/adv_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/adv_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/kws/adv_5.wav">
+</audio>
+</center>
+</td>    </tr>
+</table>
+<h3 id="automatic-speaker-identification-asi">Automatic Speaker Identification (ASI)</h3>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+        <td>Source Speaker</td>
+        <td><i>spf1</i></td>
+        <td><i>spf2</i></td>
+        <td><i>spf3</i></td>
+        <td><i>spf4</i></td>
+        <td><i>spf5</i></td>
+    </tr>
+    <tr>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+    </tr>
+    <tr>
+        <td>Target Speaker</td>
+        <td><i>spk1</i></td>
+        <td><i>spk2</i></td>
+        <td><i>spk3</i></td>
+        <td><i>spk4</i></td>
+        <td><i>spk5</i></td>
+    </tr>
+    <tr>
+        <td>Original sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ori_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ori_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ori_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ori_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ori_5.wav">
+</audio>
+</center>
+</td>
+    </tr>
+    <tr>
+        <td>Over-the-air sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ova_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ova_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ova_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ova_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/ova_5.wav">
+</audio>
+</center>
+</td>    </tr>
+    <tr>
+        <td>AdvReverb</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/adv_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/adv_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/adv_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/adv_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asi/adv_5.wav">
+</audio>
+</center>
+</td>    </tr>
+</table>
+<h3 id="automatic-speech-recognition-asr">Automatic Speech Recognition (ASR)</h3>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+        <td>Source Command</td>
+        <td><i>why should he not be as other men</i></td>
+        <td><i>oh won't she be savage if i've kept her waiting</i></td>
+        <td><i>nature of the effect produced by early impressions</i></td>
+        <td><i>the parliament and the scots laid their proposals before the king</i></td>
+        <td><i>old dances are simplified of their yearning bleached by time</i></td>
+    </tr>
+    <tr>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+        <td>$\downarrow$</td>
+    </tr>
+    <tr>
+        <td>Target Command</td>
+        <td><i>open the door</i></td>
+        <td><i>call nine one one</i></td>
+        <td><i>send me your messages</i></td>
+        <td><i>shut down the power source</i></td>
+        <td><i>clear all appointments on calendar</i></td>
+    </tr>
+    <tr>
+        <td>Original sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ori_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ori_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ori_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ori_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ori_5.wav">
+</audio>
+</center>
+</td>
+    </tr>
+    <tr>
+        <td>Over-the-air sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ova_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ova_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ova_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ova_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/ova_5.wav">
+</audio>
+</center>
+</td>    </tr>
+    <tr>
+        <td>AdvReverb</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/adv_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/adv_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/adv_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/adv_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set2/asr/adv_5.wav">
+</audio>
+</center>
+</td>    </tr>
+</table>
+<hr>
+<h2 id="audio-sample-set3-music-carrier">Audio Sample Set3: Music Carrier</h2>
+<h3 id="keyword-spotting-kws-target-keyword-yes">Keyword Spotting (KWS): target keyword <em>&ldquo;yes&rdquo;</em></h3>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+        <td>Source Music</td>
+        <td><i>violin</i></td>
+        <td><i>guitar</i></td>
+        <td><i>piano</i></td>
+        <td><i>pop</i></td>
+        <td><i>rap</i></td>
+    </tr>
+    <tr>
+        <td>Original sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ori_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ori_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ori_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ori_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ori_5.wav">
+</audio>
+</center>
+</td>
+    </tr>
+    <tr>
+        <td>Over-the-air sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ova_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ova_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ova_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ova_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/ova_5.wav">
+</audio>
+</center>
+</td>    </tr>
+    <tr>
+        <td>AdvReverb</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/adv_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/adv_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/adv_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/adv_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/kws/adv_5.wav">
+</audio>
+</center>
+</td>    </tr>
+</table>
+<h3 id="automatic-speaker-identification-asi-target-speaker-spk0">Automatic Speaker Identification (ASI): target speaker <em>&ldquo;spk0&rdquo;</em></h3>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+        <td>Source Music</td>
+        <td><i>violin</i></td>
+        <td><i>guitar</i></td>
+        <td><i>piano</i></td>
+        <td><i>pop</i></td>
+        <td><i>rap</i></td>
+    </tr>
+    <tr>
+        <td>Original sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ori_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ori_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ori_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ori_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ori_5.wav">
+</audio>
+</center>
+</td>
+    </tr>
+    <tr>
+        <td>Over-the-air sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ova_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ova_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ova_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ova_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/ova_5.wav">
+</audio>
+</center>
+</td>    </tr>
+    <tr>
+        <td>AdvReverb</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/adv_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/adv_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/adv_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/adv_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asi/adv_5.wav">
+</audio>
+</center>
+</td>    </tr>
+</table>
+<h3 id="automatic-speech-recognition-asr-target-command-clear-all-appointments-on-calendar">Automatic Speech Recognition (ASR): target command <em>&ldquo;clear all appointments on calendar&rdquo;</em></h3>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+    <tr>
+        <td>Source Music</td>
+        <td><i>violin</i></td>
+        <td><i>guitar</i></td>
+        <td><i>piano</i></td>
+        <td><i>pop</i></td>
+        <td><i>rap</i></td>
+    </tr>
+    <tr>
+        <td>Original sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ori_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ori_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ori_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ori_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ori_5.wav">
+</audio>
+</center>
+</td>
+    </tr>
+    <tr>
+        <td>Over-the-air sample</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ova_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ova_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ova_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ova_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/ova_5.wav">
+</audio>
+</center>
+</td>    </tr>
+    <tr>
+        <td>AdvReverb</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/adv_1.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/adv_2.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/adv_3.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/adv_4.wav">
+</audio>
+</center>
+</td>
+        <td>
+<center>
+<audio controls class="audio-mini">
+    <source src="./audio/set3/asr/adv_5.wav">
+</audio>
+</center>
+</td>    </tr>
+</table>
+<hr>
+<h2 id="audio-sample-set4-different-impulse-responses">Audio Sample Set4: Different Impulse Responses</h2>
+<p>We adopt 4 types of impulse responses as the initialization template of convolutional adversarial perturbations:</p>
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+<tr>
+    <td>
+<center>
+<img src="./figure/rir-wav-sn.png" alt="rir-wave-sn" width="100%">
+</center>
+
+</td>
+    <td>
+<center>
+<img src="./figure/rir-wav-sf.png" alt="rir-wave-sf" width="100%">
+</center>
+
+</td>
+    <td>
+<center>
+<img src="./figure/rir-wav-ln.png" alt="rir-wave-ln" width="100%">
+</center>
+
+</td>
+    <td>
+<center>
+<img src="./figure/rir-wav-lf.png" alt="rir-wave-lf" width="100%">
+</center>
+
+</td>
+</tr>
+</table>
+<h3 id="keyword-spotting-kws-target-keyword-yes-1">Keyword Spotting (KWS): target keyword <em>&ldquo;yes&rdquo;</em></h3>
+
+<center>
+<div style="display:table;margin-bottom:0.5em;">
+    <span style="display:table-cell;vertical-align:middle;width:200px;text-align:left;">Original sample:</span>
+    <audio controls style="display:table-cell;vertical-align:middle;"><source src="./audio/set4/kws/ori.wav"></audio>
+</div>
+</center>
+
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+<tr>
+    <td>Impulse response</td>
+    <td>Small, Near</td>
+    <td>Small, Far</td>
+    <td>Large, Near</td>
+    <td>Large, Far</td>
+</tr>
+<tr>
+    <td>Over-the-air sample</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/ova_sn.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/ova_sf.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/ova_ln.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/ova_lf.wav">
+</audio>
+</center>
+</td>
+</tr>
+<tr>
+    <td>Adversarial example</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/adv_sn.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/adv_sf.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/adv_ln.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/kws/adv_lf.wav">
+</audio>
+</center>
+</td>
+</tr>
+</table>
+<h3 id="automatic-speaker-identification-asi-target-speaker-spk0-1">Automatic Speaker Identification (ASI): target speaker <em>&ldquo;spk0&rdquo;</em></h3>
+
+<center>
+<div style="display:table;margin-bottom:0.5em;">
+    <span style="display:table-cell;vertical-align:middle;width:200px;text-align:left;">Original sample:</span>
+    <audio controls style="display:table-cell;vertical-align:middle;"><source src="./audio/set4/asi/ori.wav"></audio>
+</div>
+</center>
+
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+<tr>
+    <td>Impulse response</td>
+    <td>Small, Near</td>
+    <td>Small, Far</td>
+    <td>Large, Near</td>
+    <td>Large, Far</td>
+</tr>
+<tr>
+    <td>Over-the-air sample</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/ova_sn.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/ova_sf.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/ova_ln.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/ova_lf.wav">
+</audio>
+</center>
+</td>
+</tr>
+<tr>
+    <td>Adversarial example</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/adv_sn.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/adv_sf.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/adv_ln.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asi/adv_lf.wav">
+</audio>
+</center>
+</td>
+</tr>
+</table>
+<h3 id="automatic-speech-recognition-asr-target-command-clear-all-appointments-on-calendar-1">Automatic Speech Recognition (ASR): target command <em>&ldquo;clear all appointments on calendar&rdquo;</em></h3>
+
+<center>
+<div style="display:table;margin-bottom:0.5em;">
+    <span style="display:table-cell;vertical-align:middle;width:200px;text-align:left;">Original sample:</span>
+    <audio controls style="display:table-cell;vertical-align:middle;"><source src="./audio/set4/asr/ori.wav"></audio>
+</div>
+</center>
+
+<table style="text-align:center; vertical-align:middle; font-size: 18px;">
+<tr>
+    <td>Impulse response</td>
+    <td>Small, Near</td>
+    <td>Small, Far</td>
+    <td>Large, Near</td>
+    <td>Large, Far</td>
+</tr>
+<tr>
+    <td>Over-the-air sample</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/ova_sn.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/ova_sf.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/ova_ln.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/ova_lf.wav">
+</audio>
+</center>
+</td>
+</tr>
+<tr>
+    <td>Adversarial example</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/adv_sn.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/adv_sf.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/adv_ln.wav">
+</audio>
+</center>
+</td>
+    <td>
+<center>
+<audio controls class="audio-medium">
+    <source src="./audio/set4/asr/adv_lf.wav">
+</audio>
+</center>
+</td>
+</tr>
+</table>
+    </div>
+
+    
+</article>
+
+            </main>
+        </div>
+
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+        <a href="#top-of-site" class="top-of-site-link" data-visible="false">
+            <span class="screen-reader-text" aria-label="Back to top of the page">
+                Back to top
+            </span>
+            <svg width="32" height="32" viewBox="0 0 100 100">
+                <path fill="white" d="m50 0c-13.262 0-25.98 5.2695-35.355 14.645s-14.645 22.094-14.645 35.355 5.2695 25.98 14.645 35.355 22.094 14.645 35.355 14.645 25.98-5.2695 35.355-14.645 14.645-22.094 14.645-35.355-5.2695-25.98-14.645-35.355-22.094-14.645-35.355-14.645zm20.832 62.5-20.832-22.457-20.625 22.457c-1.207 0.74219-2.7656 0.57812-3.7891-0.39844-1.0273-0.98047-1.2695-2.5273-0.58594-3.7695l22.918-25c0.60156-0.61328 1.4297-0.96094 2.2891-0.96094 0.86328 0 1.6914 0.34766 2.293 0.96094l22.918 25c0.88672 1.2891 0.6875 3.0352-0.47266 4.0898-1.1562 1.0508-2.9141 1.0859-4.1133 0.078125z"></path>
+            </svg>
+        </a>
+    </body>
+</html>
